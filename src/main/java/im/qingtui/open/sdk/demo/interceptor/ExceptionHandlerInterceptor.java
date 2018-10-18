@@ -1,0 +1,23 @@
+package im.qingtui.open.sdk.demo.interceptor;
+
+import com.cisdi.nudgeplus.tmsbeans.beans.BaseResult;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+/**
+ * @author yiya
+ */
+@ControllerAdvice
+public class ExceptionHandlerInterceptor {
+
+    @ExceptionHandler(Exception.class)
+    @ResponseBody
+    public BaseResult handleIllegalRequestException(Exception e){
+        BaseResult baseResult = new BaseResult();
+        baseResult.setErrcode(-1);
+        baseResult.setErrmsg("system error");
+        return baseResult;
+    }
+
+}

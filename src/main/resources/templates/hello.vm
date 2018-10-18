@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script
+      src="http://code.jquery.com/jquery-2.2.4.js"
+      integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+      crossorigin="anonymous"></script>
+  <title>java sdk demo</title>
+  <style>
+    img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+
+    .username {
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+<div>
+  <h1>获取用户基本信息</h1>
+  <hr>
+  <img src="${user.avatar}">
+  <div class="username">你好，${user.username}！</div>
+  <h1>消息发送</h1>
+  <hr>
+  <textarea class="content"></textarea>
+  <a href="javascript:;" class="singleSend">单人发送</a>
+  <a href="javascript:;" class="serviceSend">全体发送</a>
+  <hr>
+  <h1>企业通讯录操作</h1>
+  <div>
+    <a href="javascript:;" class="memberPage">获取企业用户信息</a>
+  </div>
+  <div class="memberInfo"></div>
+</div>
+</body>
+<script>
+  $(document).ready(function(){
+    $(".singleSend").click(function(){
+      var content = $(".content").val();
+      var data = {
+        "openId":'${user.openid}',
+        "text":content
+      }
+      sendRequest("single/send",data);
+    });
+    $(".serviceSend").click(function(){
+      var content = $(".content").val();
+      var data = {
+        "text":content
+      }
+      sendRequest("service/send",data);
+    });
+    $(".memberPage").click(function () {
+      var data = {
+        "requestPage":1,
+        "pageSize":20
+      }
+      $.ajax({
+        url:"member/page",
+        data:data,
+        success:function (res) {
+          $(".memberInfo").html(res);
+        }
+      })
+    });
+
+    function sendRequest(url,data) {
+      $.ajax({
+        url:url,
+        data:data
+      })
+    }
+  });
+</script>
+</html>
