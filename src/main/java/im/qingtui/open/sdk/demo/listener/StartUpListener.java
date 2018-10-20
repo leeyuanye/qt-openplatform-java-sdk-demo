@@ -4,8 +4,6 @@ import com.cisdi.nudgeplus.sdk.service.TokenService;
 import java.util.Timer;
 import java.util.TimerTask;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
-import org.springframework.boot.context.event.ApplicationStartedEvent;
-import org.springframework.boot.context.event.SpringApplicationEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +25,7 @@ public class StartUpListener {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                String token = TokenService.getToken().getAccess_token();
+                String token = TokenService.getToken().getAccessToken();
                 TokenService.ACCESS_TOKEN = token;
             }
         }, 0,REFRESH_TOKEN_PERIOD_MS);

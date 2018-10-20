@@ -27,9 +27,15 @@
   <div class="username">你好，${user.username}！</div>
   <h1>消息发送</h1>
   <hr>
+  <h2>纯文本消息</h2>
   <textarea class="content"></textarea>
   <a href="javascript:;" class="singleSend">单人发送</a>
   <a href="javascript:;" class="serviceSend">全体发送</a>
+  <h2>待办消息</h2>
+  <input class="processTitle"/>
+  <textarea class="processContent"></textarea>
+  <input class="processUrl"/>
+  <a href="javascript:;" class="processSend">单人发送</a><input class="processMsgId"><a href="javascript:;" class="processComplete">完成</a>
   <hr>
   <h1>企业通讯录操作</h1>
   <div>
@@ -46,14 +52,40 @@
         "openId":'${user.openid}',
         "text":content
       }
-      sendRequest("single/send",data);
+      sendRequest("text/msg/single/send",data);
     });
     $(".serviceSend").click(function(){
       var content = $(".content").val();
       var data = {
         "text":content
       }
-      sendRequest("service/send",data);
+      sendRequest("text/msg/service/send",data);
+    });
+    $(".processSend").click(function(){
+      var content = $(".processContent").val();
+      var url = $(".processUrl").val();
+      var title = $(".processTitle").val();
+      var data = {
+        "title":title,
+        "url":url,
+        "content":content,
+        "openId":'${user.openid}'
+      }
+      $.ajax({
+        url:"process/msg/single/send",
+        data:data,
+        success:function (res) {
+          $(".processMsgId").val(res);
+        }
+      })
+    });
+    $(".processComplete").click(function () {
+      var msgId = $(".processMsgId").val();
+      var data = {
+        "openId":'${user.openid}',
+        "msgId":msgId
+      }
+      sendRequest("process/msg/complete",data);
     });
     $(".memberPage").click(function () {
       var data = {
