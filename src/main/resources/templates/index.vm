@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <script
       src="http://code.jquery.com/jquery-2.2.4.js"
       integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
@@ -17,10 +18,17 @@
     .username {
       display: inline-block;
     }
+    .content-wrapper{
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .row{
+      margin-bottom: 20px;
+    }
   </style>
 </head>
 <body>
-<div>
+<div class="content-wrapper">
   <h1>获取用户基本信息</h1>
   <hr>
   <img src="${user.avatar}">
@@ -28,13 +36,21 @@
   <h1>消息发送</h1>
   <hr>
   <h2>纯文本消息</h2>
-  <textarea class="content"></textarea>
-  <a href="javascript:;" class="singleSend">单人发送</a>
-  <a href="javascript:;" class="serviceSend">全体发送</a>
+  <div class="row">
+    <div class="col-md-6">
+      <textarea class="form-control content" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <button type="button" class="btn btn-primary">单人发送</button>
+      <button type="button" class="btn btn-info">全体发送</button>
+    </div>
+  </div>
   <h2>待办消息</h2>
-  <input class="processTitle"/>
-  <textarea class="processContent"></textarea>
-  <input class="processUrl"/>
+  标题<input class="processTitle"/> 
+  内容<textarea class="processContent"></textarea>
+  链接<input class="processUrl"/> 
   <a href="javascript:;" class="processSend">单人发送</a><input class="processMsgId"><a href="javascript:;" class="processComplete">完成</a>
   <hr>
   <h1>企业通讯录操作</h1>
