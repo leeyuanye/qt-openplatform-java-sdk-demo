@@ -11,6 +11,8 @@ import com.cisdi.nudgeplus.tmsbeans.model.TextMsg;
 import com.cisdi.nudgeplus.tmsbeans.model.request.member.RequestPagedUserInfo;
 import com.cisdi.nudgeplus.tmsbeans.model.request.process.CompleteProcess;
 import com.cisdi.nudgeplus.tmsbeans.model.request.process.ProcessMsg;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,8 +33,14 @@ public class DemoController {
      * @return
      */
     @RequestMapping("/index")
-    public String index(@RequestParam("qt_code") String qtCode,Model model) {
-        UserInfoResult userInfoResult = OAuthService.getUserInfo(qtCode);
+    public String index(@RequestParam("qt_code") String qtCode,Model model,HttpServletRequest request) {
+        UserInfoResult userInfoResult = null;
+        userInfoResult = OAuthService.getUserInfo(qtCode);
+        if(userInfoResult !=null){
+            request.getSession().setAttribute("user",userInfoResult);
+        } else {
+            userInfoResult = (UserInfoResult) request.getSession().getAttribute("user");
+        }
         model.addAttribute("user",userInfoResult);
         return "index";
     }
