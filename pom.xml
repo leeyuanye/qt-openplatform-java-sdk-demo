@@ -28,7 +28,7 @@
 		<dependency>
 			<groupId>im.qingtui.sdk</groupId>
 			<artifactId>im-qingtui-op-sdk</artifactId>
-			<version>1.1.4.3</version>
+			<version>1.1.4.5</version>
 		</dependency>
 
 		<dependency>
