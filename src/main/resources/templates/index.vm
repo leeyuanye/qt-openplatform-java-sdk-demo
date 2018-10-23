@@ -1,184 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script
-            src="http://code.jquery.com/jquery-2.2.4.js"
-            integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
-            crossorigin="anonymous"></script>
-    <title>java sdk demo</title>
-    <style>
-        img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-        }
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script
+      src="http://code.jquery.com/jquery-2.2.4.js"
+      integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+      crossorigin="anonymous"></script>
+  <title>java sdk demo</title>
+  <style>
+    img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
 
-        .username {
-            display: inline-block;
-        }
+    .username {
+      display: inline-block;
+    }
 
-        .content-wrapper {
-            max-width: 800px;
-            margin: 20px auto;
-        }
+    .content-wrapper {
+      max-width: 800px;
+      margin: 20px auto;
+    }
 
-        .row {
-            margin-bottom: 20px;
-        }
-        h1,h2{
-            margin: 20px 0;
-        }
-    </style>
+    .row {
+      margin-bottom: 20px;
+    }
+
+    h1, h2 {
+      margin: 20px 0;
+    }
+  </style>
 </head>
 <body>
 <div class="content-wrapper">
-    <h1>1、获取用户基本信息</h1>
-    <hr>
-    <img src="${user.avatar}">
-    <div class="username">你好，${user.username}！</div>
-    <h1>2、消息发送</h1>
-    <hr>
-    <h2>纯文本消息</h2>
+  <h1>1、获取用户基本信息</h1>
+  <hr>
+  <img src="${user.avatar}">
+  <div class="username">你好，${user.username}！</div>
+  <h1>2、消息发送</h1>
+  <hr>
+  <h2>纯文本消息</h2>
 
-    <form class="form-horizontal">
-        <div class="form-group">
-            <div class="col-sm-6">
+  <form class="form-horizontal">
+    <div class="form-group">
+      <div class="col-sm-6">
                 <textarea class="form-control content" id="exampleFormControlTextarea1" rows="3"
                           placeholder="请输入消息内容"></textarea>
-            </div>
-        </div>
-        <div class="col-sm-offset-2 col-sm-6">
-            <button type="button" class="btn btn-primary singleSend">单人发送(发给当前使用者)</button>
-            <button type="button" class="btn btn-info serviceSend">全体发送</button>
-        </div>
-    </form>
-    <h2>待办消息</h2>
-    <form class="form-horizontal">
-        <div class="form-group">
-            <div class="col-sm-6">
-                <input type="text" class="form-control processTitle" id="title" placeholder="请输入标题">
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-6">
+      </div>
+    </div>
+    <div class="col-sm-offset-2 col-sm-6">
+      <button type="button" class="btn btn-primary singleSend">单人发送(发给当前使用者)</button>
+      <button type="button" class="btn btn-info serviceSend">全体发送</button>
+    </div>
+  </form>
+  <h2>待办消息</h2>
+  <form class="form-horizontal">
+    <div class="form-group">
+      <div class="col-sm-6">
+        <input type="text" class="form-control processTitle" id="title" placeholder="请输入标题">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-6">
                 <textarea type="text" class="form-control processContent" rows="3"
                           placeholder="请输入内容"></textarea>
-            </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-6">
+        <input type="text" class="form-control processUrl" id="processUrl" placeholder="请输入链接">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-6">
+        <button type="button" class="btn btn-primary processSend">单人发送(发给当前使用者)</button>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-6">
+        <input type="text" class="form-control processMsgId" placeholder="请输入待办消息信息">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-6">
+        <button type="button" class="btn btn-success processComplete">完成待办消息</button>
+      </div>
+    </div>
+  </form>
+  <h1>3、企业通讯录操作</h1>
+  <hr>
+  <h2>获取企业用户信息</h2>
+  <form class="form-horizontal">
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-6">
+        <button type="button" class="btn btn-info memberPage">立即获取</button>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-6">
+        <div class="memberInfo">
+          <table class="table">
+            <thead>
+            <td>头像</td>
+            <td>姓名</td>
+            <td>手机号码</td>
+            </thead>
+            <tbody></tbody>
+          </table>
         </div>
-        <div class="form-group">
-            <div class="col-sm-6">
-                <input type="text" class="form-control processUrl" id="processUrl" placeholder="请输入链接">
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-6">
-                <button type="button" class="btn btn-primary processSend">单人发送(发给当前使用者)</button>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-6">
-                <input type="text" class="form-control processMsgId"  placeholder="请输入待办消息信息">
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-6">
-                <button type="button" class="btn btn-success processComplete">完成待办消息</button>
-            </div>
-        </div>
-    </form>
-    <h1>3、企业通讯录操作</h1>
-    <hr>
-    <h2>获取企业用户信息</h2>
-    <form class="form-horizontal">
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-6">
-                <button type="button" class="btn btn-info memberPage">立即获取</button>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-6">
-                <div class="memberInfo">
-                  <table class="table">
-                    <thead><td>头像</td><td>姓名</td><td>手机号码</td></thead>
-                    <tbody></tbody>
-                  </table>
-                </div>
-            </div>
-        </div>
-    </form>
+      </div>
+    </div>
+  </form>
 </div>
 </body>
 <script>
-    $(document).ready(function () {
-        $(".singleSend").click(function () {
-            var content = $(".content").val();
-            var data = {
-                "openId": '${user.openid}',
-                "text": content
-            }
-            sendRequest("text/msg/single/send", data);
-        });
-        $(".serviceSend").click(function () {
-            var content = $(".content").val();
-            var data = {
-                "text": content
-            }
-            sendRequest("text/msg/service/send", data);
-        });
-        $(".processSend").click(function () {
-            var content = $(".processContent").val();
-            var url = $(".processUrl").val();
-            var title = $(".processTitle").val();
-            var data = {
-                "title": title,
-                "url": url,
-                "content": content,
-                "openId": '${user.openid}'
-            }
-            $.ajax({
-                url: "process/msg/single/send",
-                data: data,
-                success: function (res) {
-                    $(".processMsgId").val(res);
-                }
-            })
-        });
-        $(".processComplete").click(function () {
-            var msgId = $(".processMsgId").val();
-            var data = {
-                "openId": '${user.openid}',
-                "msgId": msgId
-            }
-            sendRequest("process/msg/complete", data);
-        });
-        $(".memberPage").click(function () {
-            var data = {
-                "requestPage": 1,
-                "pageSize": 20
-            }
-            $.ajax({
-                url: "member/page",
-                data: data,
-                success: function (res) {
-                  $("tbody").empty();
-                  for(var i=0;i<res.resultList.length;i++){
-                    var data = res.resultList[i];
-                    var tr = '<tr><td><img src="'+data.avatar+'"></td><td>'+data.name+'</td><td>'+data.mobile+'</td></tr>';
-                    $("tbody").append(tr);
-                  }
-                }
-            })
-        });
-
-        function sendRequest(url, data) {
-            $.ajax({
-                url: url,
-                data: data
-            })
-        }
+  $(document).ready(function () {
+    $(".singleSend").click(function () {
+      var content = $(".content").val();
+      var data = {
+        "openId": '${user.openid}',
+        "text": content
+      }
+      sendRequest("text/msg/single/send", data);
     });
+    $(".serviceSend").click(function () {
+      var content = $(".content").val();
+      var data = {
+        "text": content
+      }
+      sendRequest("text/msg/service/send", data);
+    });
+    $(".processSend").click(function () {
+      var content = $(".processContent").val();
+      var url = $(".processUrl").val();
+      var title = $(".processTitle").val();
+      var data = {
+        "title": title,
+        "url": url,
+        "content": content,
+        "openId": '${user.openid}'
+      }
+      $.ajax({
+        url: "process/msg/single/send",
+        data: data,
+        success: function (res) {
+          $(".processMsgId").val(res);
+        }
+      })
+    });
+    $(".processComplete").click(function () {
+      var msgId = $(".processMsgId").val();
+      var data = {
+        "openId": '${user.openid}',
+        "msgId": msgId
+      }
+      sendRequest("process/msg/complete", data);
+    });
+    $(".memberPage").click(function () {
+      var data = {
+        "requestPage": 1,
+        "pageSize": 20
+      }
+      $.ajax({
+        url: "member/page",
+        data: data,
+        success: function (res) {
+          $("tbody").empty();
+          for (var i = 0; i < res.resultList.length; i++) {
+            var data = res.resultList[i];
+            var tr = '<tr><td><img src="' + data.avatar + '"></td><td>' + data.name + '</td><td>' + data.mobile + '</td></tr>';
+            $("tbody").append(tr);
+          }
+        }
+      })
+    });
+
+    function sendRequest(url, data) {
+      $.ajax({
+        url: url,
+        data: data
+      })
+    }
+  });
 </script>
 </html>

@@ -17,7 +17,7 @@ public class StartUpListener {
     /**
      * 刷新token的毫秒数
      */
-    private static final Long REFRESH_TOKEN_PERIOD_MS = 60*60*1000L;
+    private static final Long REFRESH_TOKEN_PERIOD_MS = 60 * 60 * 1000L;
 
     @EventListener
     public void onApplicationEvent(ApplicationReadyEvent event) {
@@ -28,6 +28,6 @@ public class StartUpListener {
                 String token = TokenService.getToken().getAccessToken();
                 TokenService.ACCESS_TOKEN = token;
             }
-        }, 0,REFRESH_TOKEN_PERIOD_MS);
+        }, 0, REFRESH_TOKEN_PERIOD_MS);
     }
 }
