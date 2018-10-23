@@ -33,7 +33,7 @@ public class DemoController {
      * @return
      */
     @RequestMapping("/index")
-    public String index(@RequestParam("qt_code") String qtCode,Model model,HttpServletRequest request) {
+    public String index(@RequestParam(value = "qt_code",required = false) String qtCode,Model model,HttpServletRequest request) {
         UserInfoResult userInfoResult = null;
         userInfoResult = OAuthService.getUserInfo(qtCode);
         if(userInfoResult !=null){
