@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- * 示例控制层，主要实现了用户免密登录，发送消息，获取企业成员信息
  *
+ *示例控制层，主要实现了用户免密登录，发送消息，获取企业成员信息
  * @author yiya
  */
 @Controller

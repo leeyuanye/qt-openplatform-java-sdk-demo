@@ -19,6 +19,7 @@ public class ExceptionHandlerInterceptor {
         BaseResult baseResult = new BaseResult();
         baseResult.setErrcode(-1);
         baseResult.setErrmsg("system error");
+        e.printStackTrace();
         return baseResult;
     }
 
