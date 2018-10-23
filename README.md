@@ -1,5 +1,7 @@
 # 项目说明
 * 本项目是轻推开放平台javaSDK的示例项目，用于帮助开发者快速搭建轻应用。
+* 开发环境：jkd 1.7
+* 技术栈：spring-boot、velocity、jquery
 
 # 项目功能点
 * 定时刷新access_token示例
