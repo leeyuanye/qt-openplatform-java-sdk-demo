@@ -51,31 +51,31 @@
             </div>
         </div>
         <div class="col-sm-offset-2 col-sm-6">
-            <button type="button" class="btn btn-primary">单人发送</button>
-            <button type="button" class="btn btn-info">全体发送</button>
+            <button type="button" class="btn btn-primary singleSend">单人发送(发给当前使用者)</button>
+            <button type="button" class="btn btn-info serviceSend">全体发送</button>
         </div>
     </form>
     <h2>待办消息</h2>
     <form class="form-horizontal">
         <div class="form-group">
             <div class="col-sm-6">
-                <input type="text" class="form-control" id="title" placeholder="请输入标题">
+                <input type="text" class="form-control processTitle" id="title" placeholder="请输入标题">
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-6">
-                <textarea type="text" class="form-control" id="processContent" rows="3"
+                <textarea type="text" class="form-control processContent" rows="3"
                           placeholder="请输入内容"></textarea>
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-6">
-                <input type="text" class="form-control" id="processUrl" placeholder="请输入链接">
+                <input type="text" class="form-control processUrl" id="processUrl" placeholder="请输入链接">
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-6">
-                <button type="submit" class="btn btn-primary processSend">单人发送</button>
+                <button type="button" class="btn btn-primary processSend">单人发送(发给当前使用者)</button>
             </div>
         </div>
         <div class="form-group">
@@ -85,7 +85,7 @@
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-6">
-                <button type="submit" class="btn btn-success processComplete">完成待办消息</button>
+                <button type="button" class="btn btn-success processComplete">完成待办消息</button>
             </div>
         </div>
     </form>
@@ -95,12 +95,17 @@
     <form class="form-horizontal">
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-6">
-                <button type="submit" class="btn btn-info memberPage">立即获取</button>
+                <button type="button" class="btn btn-info memberPage">立即获取</button>
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-6">
-                <div class="memberInfo"></div>
+                <div class="memberInfo">
+                  <table class="table">
+                    <thead><td>头像</td><td>姓名</td><td>手机号码</td></thead>
+                    <tbody></tbody>
+                  </table>
+                </div>
             </div>
         </div>
     </form>
@@ -158,7 +163,12 @@
                 url: "member/page",
                 data: data,
                 success: function (res) {
-                    $(".memberInfo").html(res);
+                  $("tbody").empty();
+                  for(var i=0;i<res.resultList.length;i++){
+                    var data = res.resultList[i];
+                    var tr = '<tr><td><img src="'+data.avatar+'"></td><td>'+data.name+'</td><td>'+data.mobile+'</td></tr>';
+                    $("tbody").append(tr);
+                  }
                 }
             })
         });
